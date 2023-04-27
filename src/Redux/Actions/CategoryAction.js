@@ -1,0 +1,17 @@
+import { GET_ALL_CATEGORY,  GET_ERROR } from "../type";
+import useGetData from "../../Hooks/useGetData";
+
+export const getAllCategory = () => async (dispatch) => {
+    try {
+        const res = await useGetData("/api/v1/categories");
+        dispatch({
+            type: GET_ALL_CATEGORY,
+            payload: res,
+        })
+    }catch(err) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Error " + err,
+        })
+    }
+}
