@@ -5,16 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategory } from '../../Redux/Actions/CategoryAction';
 
 const AllCategoryPage = () => {
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [])
-
-    const data = useSelector(state => state.AllCategory.category)
-    const loading = useSelector(state => state.AllCategory.loading)
-    console.log(data.data, loading)
-
     return (
         <div style={{minHeight:'670px'}}>
         
