@@ -8,17 +8,7 @@ import sale from "../../images/sale.png";
 import pic from "../../images/pic.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategory } from '../../Redux/Actions/CategoryAction';
-const CategoryContainer = () => {
-
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [])
-
-    const categoryData = useSelector(state => state.AllCategory.category)
-    const loading = useSelector(state => state.AllCategory.loading)
-    console.log(categoryData.data, loading)
+const CategoryContainer = ({categoryData, loading}) => {
 
     const colors = ['#ffd3eb', '#f4dba5', '#55cfdf', '#ff6262', '#0034ff', '#ffd3e8']
 
@@ -28,8 +18,8 @@ const CategoryContainer = () => {
             <Row className='my-2 d-flex justify-content-between'>
             {
                 loading === false ?
-                categoryData.data ? 
-                    categoryData.data.map((item, index) => {
+                categoryData ? 
+                    categoryData.map((item, index) => {
                         return (
                             <CategoryCard title={item.name} img={item.image} background={colors[Math.floor(Math.random() * 5 ) + 1]} key={index} />
                         )
