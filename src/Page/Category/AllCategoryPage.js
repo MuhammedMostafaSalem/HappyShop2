@@ -31,7 +31,7 @@ const AllCategoryPage = () => {
         <div style={{minHeight:'670px'}}>
             <CategoryContainer categoryData={categoryData.data} loading={loading} />
             {
-                pageCount > 2 ? <Pagination pageCount={pageCount} onPress={getPage} /> : null
+                pageCount > 1 ? <Pagination pageCount={pageCount} onPress={getPage} /> : null
             }
         </div>
     )
