@@ -10,8 +10,8 @@ const AllCategoryPage = () => {
 
     // when first load
     useEffect(() => {
-        dispatch(getAllCategory(4));
-    }, [])
+        dispatch(getAllCategory(5));
+    }, [dispatch])
 
     // to get state from redux
     const categoryData = useSelector(state => state.AllCategory.category)
