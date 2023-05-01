@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Container, Row, Spinner } from 'react-bootstrap';
 import SubTiltle from '../Uitily/SubTiltle'
 import CategoryCard from './../Category/CategoryCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllCategory } from '../../Redux/Actions/CategoryAction';
+import HomeCategoryHook from '../../CustomHook/Category/HomeCategoryHook';
 
 const HomeCategory = () => {
 
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        dispatch(getAllCategory());
-    }, [])
+    const [ categoryData, loading, colors ] = HomeCategoryHook();
 
-    const categoryData = useSelector(state => state.AllCategory.category)
-    const loading = useSelector(state => state.AllCategory.loading)
-    console.log(categoryData.data, loading)
-
-    const colors = ['#ffd3eb', '#f4dba5', '#55cfdf', '#ff6262', '#0034ff', '#ffd3e8']
     return (
         <Container>
             <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
