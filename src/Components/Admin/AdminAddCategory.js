@@ -1,73 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import avatar from '../../images/avatar.png'
-import { useDispatch, useSelector } from 'react-redux'
-import { createCategory } from '../../Redux/Actions/CategoryAction'
-import { toast } from 'react-toastify'
+import AddCategoryHook from '../../CustomHook/Category/AddCategoryHook'
 
 const AdminAddCategory = () => {
-    const dispatch = useDispatch();
 
-    const [img, setImg] = useState(avatar)
-    const [name, setName] = useState('')
-    const [selectedFile, setSelectedFile] = useState(null)
-    const [loading, setLoading] = useState(true)
-
-    // when image change save it
-    const onImageChange = (e) => {
-        if(e.target.files && e.target.files[0]) {
-            setImg(URL.createObjectURL(e.target.files[0]))
-            setSelectedFile(e.target.files[0])
-        }
-    }
-
-    // when name change save it
-    const onNameChange = (e) => {
-        setName(e.target.value)
-    }
-
-
-    const res = useSelector(state => state.AllCategory.category)
-
-
-    // save date in database
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if(name === '' || selectedFile === null) {
-            toast.warning('من فضلك اكمل البيانات')
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("image", selectedFile);
-        
-        setLoading(true)
-
-        if(res) {
-            toast.info('جاري التحميل')
-        }
-
-        await dispatch(createCategory(formData))
-        setLoading(false)
-    }
-
-    useEffect(() => {
-        if(loading === false) {
-            setImg(avatar)
-            setName('')
-            setSelectedFile(null)
-
-            if(res.status === 201) {
-                toast.success('تم عملية الاضافة بنجاح')
-            }else {
-                toast.error('هناك مشكلة في عملية الاضافة')
-            }
-
-        }
-    }, [loading])
-    
+    const [ img, name, loading, onImageChange, onNameChange, handleSubmit, ] = AddCategoryHook();
 
     return (
         <div>
