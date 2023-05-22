@@ -662,3 +662,14 @@ body {
   position: absolute;
   z-index: -1;
 }
+
+/* MultiImageInput products */
+.lmMaya {
+  width: 100%;
+  border: 1px solid #979797 !important;
+  border-radius: 8px;
+  background-color: #f9f9f9 !important;
+}
+.lmMaya .eJEChV div {
+  width: 59px;
+}
