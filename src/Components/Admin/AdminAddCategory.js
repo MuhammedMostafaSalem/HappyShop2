@@ -5,7 +5,6 @@ import AddCategoryHook from '../../CustomHook/Category/AddCategoryHook'
 const AdminAddCategory = () => {
 
     const [ img, name, loading, onImageChange, onNameChange, handleSubmit, ] = AddCategoryHook();
-
     return (
         <div>
             <Row className="justify-content-start ">
