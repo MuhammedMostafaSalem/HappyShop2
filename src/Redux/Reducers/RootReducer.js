@@ -2,9 +2,11 @@ import { combineReducers } from "redux";
 import CategoryReducer from "./CategoryReducer";
 import BrandReducer from "./BrandReducer";
 import SubCategoryReducer from "./SubCategoryReducer";
+import ProductReducer from "./ProductReducer";
 
 export default combineReducers({
     AllCategory: CategoryReducer,
     AllBrand: BrandReducer,
-    SubCategory: SubCategoryReducer
+    SubCategory: SubCategoryReducer,
+    ProductReducer: ProductReducer
 })
