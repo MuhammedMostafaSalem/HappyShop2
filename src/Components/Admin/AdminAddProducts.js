@@ -10,36 +10,31 @@ import { CompactPicker } from 'react-color';
 const AdminAddProducts = () => {
 
     const [
+        onChangeDesName,
+        onChangeQty,
+        onChangeColor,
+        onChangePriceAfter,
+        onChangePriceBefor,
+        onChangeProdName,
+        showColor,
+        category,
+        brand,
+        priceAftr,
         images,
         setImages,
-        productName,
-        setProductName,
-        productDescription,
-        setProductDescription,
-        priceBefore,
-        setPriceBefore,
-        priceAfter,
-        setPriceAfter,
-        qty,
-        setQty,
-        category,
-        onSeletCategory,
-        brand,
-        onSeletBrand,
-        showColor,
-        onChangeColor,
-        handelChangeComplete,
-        colors,
-        removeColor,
-        options,
         onSelect,
         onRemove,
+        options,
+        handelChangeComplete,
+        removeColor,
+        onSeletCategory,
         handelSubmit,
-        onChangeProductName,
-        onChangeDesName,
-        onChangePriceBefor,
-        onChangePriceAfter,
-        onChangeQty
+        onSeletBrand,
+        colors,
+        priceBefore,
+        qty,
+        prodDescription,
+        prodName
     ] = AddProductsHook();
 
     return (
@@ -61,15 +56,15 @@ const AdminAddProducts = () => {
                         type="text"
                         className="input-form d-block mt-3 px-3"
                         placeholder="اسم المنتج"
-                        value={productName}
-                        onChange={onChangeProductName}
+                        value={prodName}
+                        onChange={onChangeProdName}
                     />
                     <textarea
                         className="input-form-area p-2 mt-3"
                         rows="4"
                         cols="50"
                         placeholder="وصف المنتج"
-                        value={productDescription}
+                        value={prodDescription}
                         onChange={onChangeDesName}
                     />
                     <input
@@ -83,7 +78,7 @@ const AdminAddProducts = () => {
                         type="number"
                         className="input-form d-block mt-3 px-3"
                         placeholder="سعر بعد الخصم"
-                        value={priceAfter}
+                        value={priceAftr}
                         onChange={onChangePriceAfter}
                     />
                     <input
