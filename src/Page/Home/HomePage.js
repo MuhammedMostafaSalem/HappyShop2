@@ -6,17 +6,19 @@ import Silder from './../../Components/Home/Silder';
 import DiscountSection from './../../Components/Home/DiscountSection';
 import BrandFeatured from '../../Components/Brand/BrandFeatured';
 import Footer from '../../Components/Uitily/Footer';
+import ViewHomeProductsHook from '../../CustomHook/Products/ViewHomeProductsHook';
 const HomePage = () => {
+
+    const [items] = ViewHomeProductsHook();
+
     return (
         <div className='font' style={{ minHeight: '670px' }}>
-
             <Silder />
             <HomeCategory />
-            <CardProductsContainer title="الاكثر مبيعا" btntitle="المزيد" pathText="/products" />
+            <CardProductsContainer products={items} title="الاكثر مبيعا" btntitle="المزيد" pathText="/products" />
             <DiscountSection />
-            <CardProductsContainer title="احدث الازياء" btntitle="المزيد" pathText="/products" />
+            <CardProductsContainer products={items} title="احدث الازياء" btntitle="المزيد" pathText="/products" />
             <BrandFeatured title="اشهر الماركات" btntitle="المزيد"  />
-
         </div>
     )
 }
