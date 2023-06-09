@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../Redux/Actions/ProductAction';
+import { getAllProducts, getAllProductsPage } from '../../Redux/Actions/ProductAction';
 
 const ViewSearchProductsHook = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllProducts())
+        dispatch(getAllProducts(12))
     }, [])
     
     const allProduct = useSelector((state) => state.ProductReducer.allProduct)
@@ -20,7 +20,19 @@ const ViewSearchProductsHook = () => {
         items = []
     }
 
-    return [items]
+    let pagination = [];
+    if (allProduct.paginationResult) {
+        pagination = allProduct.paginationResult.numberOfPages;
+    }
+    else {
+        pagination = []
+    }
+
+    const onPress = async (page) => {
+        await dispatch(getAllProductsPage(page, 12))
+    }
+
+    return [items, pagination, onPress]
 }
 
 export default ViewSearchProductsHook
