@@ -9,7 +9,14 @@ import ViewSearchProductsHook from '../../CustomHook/Products/ViewSearchProducts
 
 const ShopProductsPage = () => {
 
-    const [items] = ViewSearchProductsHook();
+    const [items, pagination, onPress] = ViewSearchProductsHook();
+
+    if(pagination) {
+        var pageCount = pagination;
+    }
+    else {
+        pagination = 0;
+    }
 
     return (
         <div style={{ minHeight: '670px' }}>
@@ -24,7 +31,7 @@ const ShopProductsPage = () => {
                         <CardProductsContainer products={items} title="" btntitle=""/>
                     </Col>
                 </Row>
-                    <Pagination />
+                    <Pagination pageCount={pageCount} onPress={onPress} />
             </Container>
         </div>
     )
