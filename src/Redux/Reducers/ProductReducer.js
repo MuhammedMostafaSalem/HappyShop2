@@ -1,8 +1,10 @@
-import {CREATE_PRODUCT, GET_ALL_PRODUCT, GET_ERROR} from '../type';
+import {CREATE_PRODUCT, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE} from '../type';
 
 const initail = {
     product: [],
     allProduct: [],
+    oneProduct: [],
+    productLike: [],
     loading: true,
 }
 
@@ -18,6 +20,17 @@ const ProductReducer = (state=initail, action) => {
             return {
                 ...state,
                 allProduct: action.payload,
+                loading: false,
+            }
+        case GET_PRODUCT_DETAILS:
+            return {
+                oneProduct: action.payload,
+                loading: false,
+            }
+        case GET_PRODUCT_LIKE:
+            return {
+                ...state,
+                productLike: action.payload,
                 loading: false,
             }
         case GET_ERROR:
