@@ -31,7 +31,9 @@ const ShopProductsPage = () => {
                         <CardProductsContainer products={items} title="" btntitle=""/>
                     </Col>
                 </Row>
-                    <Pagination pageCount={pageCount} onPress={onPress} />
+                {
+                    pageCount > 1 ? <Pagination pageCount={pageCount} onPress={onPress} /> : null
+                }
             </Container>
         </div>
     )
