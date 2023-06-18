@@ -15,8 +15,18 @@ const HomeBrandHook = () => {
     // get last loading state from redux
     const loading = useSelector(state => state.AllBrand.loading)
 
+    let items = []
+    try {
+        if(brandData.data) {
+            items = brandData.data.slice(0, 6);
+        }
+        else {
+            items = []
+        }
+    } catch(e) {}
+
     return [
-        brandData,
+        items,
         loading,
     ]
 }
