@@ -1,7 +1,8 @@
 import useDeleteData from "../../Hooks/useDeleteData";
+import { useEditDataWithImg } from "../../Hooks/useEditData";
 import useGetData from "../../Hooks/useGetData";
 import { useInsertDataWithImg } from "../../Hooks/useInsertData";
-import { CREATE_PRODUCT, DELETE_PRODUCTS, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
+import { CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
 
 //create products with pagination
 export const createProduct = (formData) => async (dispatch) => {
@@ -98,6 +99,23 @@ export const deleteProducts = (id) => async (dispatch) => {
         const res = await useDeleteData(`/api/v1/products/${id}`);
         dispatch({
             type: DELETE_PRODUCTS,
+            payload: res,
+            loading: true,
+        })
+    }catch(err) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Error " + err,
+        })
+    }
+}
+
+//edit product with id
+export const editProducts = (id, data) => async (dispatch) => {
+    try {
+        const res = await useEditDataWithImg(`/api/v1/products/${id}`, data);
+        dispatch({
+            type: EDIT_PRODUCTS,
             payload: res,
             loading: true,
         })
