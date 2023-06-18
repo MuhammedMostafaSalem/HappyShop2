@@ -1,4 +1,4 @@
-import {CREATE_PRODUCT, DELETE_PRODUCTS, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE} from '../type';
+import {CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE} from '../type';
 
 const initail = {
     product: [],
@@ -6,6 +6,7 @@ const initail = {
     oneProduct: [],
     productLike: [],
     deleteProduct: [],
+    editProduct: [],
     loading: true,
 }
 
@@ -38,6 +39,12 @@ const ProductReducer = (state=initail, action) => {
             return {
                 ...state,
                 deleteProduct: action.payload,
+                loading: false,
+            }
+        case EDIT_PRODUCTS:
+            return {
+                ...state,
+                editProduct: action.payload,
                 loading: false,
             }
         case GET_ERROR:
