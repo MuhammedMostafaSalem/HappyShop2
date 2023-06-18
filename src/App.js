@@ -23,6 +23,7 @@ import UserAllAddresPage from './Page/User/UserAllAddresPage';
 import UserAddAddressPage from './Page/User/UserAddAddressPage';
 import UserEditAddressPage from './Page/User/UserEditAddressPage';
 import UserProfilePage from "./Page/User/UserProfilePage";
+import AdminEditProductPage from "./Page/Admin/AdminEditProductPage";
 function App() {
   return (
     <div className="font" >
@@ -45,13 +46,13 @@ function App() {
           <Route path="/admin/addcategory" element={<AdminAddCategoryPage />} />
           <Route path="/admin/addsubcategory" element={<AdminAddSubCategoryPage />} />
           <Route path="/admin/addproduct" element={<AdminAddProductsPage />} />
+          <Route path="/admin/edit-product/:id" element={<AdminEditProductPage />} />  
           <Route path="/user/allorders" element={<UserAllOrdersPage />} />
           <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />} />
           <Route path="/user/addresses" element={<UserAllAddresPage />} />
           <Route path="/user/add-address" element={<UserAddAddressPage />} />
           <Route path="/user/edit-address" element={<UserEditAddressPage />} />  
           <Route path="/user/profile" element={<UserProfilePage />} />  
-          
         </Routes>
       </BrowserRouter>
       <Footer />
