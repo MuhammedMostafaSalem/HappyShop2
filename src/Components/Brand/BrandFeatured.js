@@ -9,7 +9,7 @@ import HomeBrandHook from '../../CustomHook/Brand/HomeBrandHook';
 
 const BrandFeatured = ({ title, btntitle }) => {
 
-    const [ brandData, loading ] = HomeBrandHook();
+    const [ items, loading ] = HomeBrandHook();
 
     return (
         <Container>
@@ -17,8 +17,8 @@ const BrandFeatured = ({ title, btntitle }) => {
             <Row className='my-1 d-flex justify-content-between'>
                 {
                     loading === false ?
-                        brandData.data ?
-                            brandData.data.slice(0, 6).map((item, index) => {
+                        items ?
+                            items.map((item, index) => {
                                 return (
                                     <BrandCard img={item.image} key={index} />
                                 )
