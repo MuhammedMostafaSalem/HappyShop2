@@ -11,25 +11,29 @@ const ViewProductsAdminHook = () => {
     
     const allProduct = useSelector((state) => state.ProductReducer.allProduct)
 
-    let items = []
-    if(allProduct.data) {
-        items = allProduct.data;
-    }
-    else {
-        items = []
-    }
-
-    let pagination = []
-    if(allProduct.paginationResult) {
-        pagination = allProduct.paginationResult.numberOfPages;
-    }
-    else {
-        pagination = []
-    }
-
     const onPress = async (page) => {
         await dispatch(getAllProductsPage(page, 12))
     }
+
+    
+    let items = []
+    let pagination = []
+
+    try {
+        if(allProduct.data) {
+            items = allProduct.data;
+        }
+        else {
+            items = []
+        }
+    
+        if(allProduct.paginationResult) {
+            pagination = allProduct.paginationResult.numberOfPages;
+        }
+        else {
+            pagination = []
+        }
+    } catch(e) {}
 
     return [items, pagination, onPress]
 }
