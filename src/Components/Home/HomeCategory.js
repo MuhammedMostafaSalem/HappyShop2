@@ -6,7 +6,7 @@ import HomeCategoryHook from '../../CustomHook/Category/HomeCategoryHook';
 
 const HomeCategory = () => {
 
-    const [ categoryData, loading, colors ] = HomeCategoryHook();
+    const [ items, loading, colors ] = HomeCategoryHook();
 
     return (
         <Container>
@@ -14,8 +14,8 @@ const HomeCategory = () => {
             <Row className='my-2 d-flex justify-content-between'>
                 {
                     loading === false ?
-                    categoryData.data ? 
-                        categoryData.data.slice(0,6).map((item, index) => {
+                    items ? 
+                    items.map((item, index) => {
                             return (
                                 <CategoryCard title={item.name} img={item.image} background={colors[index]} key={index} />
                             )
