@@ -52,6 +52,7 @@ const AdminEditProducts = () => {
                         setImages={setImages}
                         theme="light"
                         allowCrop={false}
+                        cropConfig={{ maxHeight: 800 }}
                         max={5}
                     />
 
