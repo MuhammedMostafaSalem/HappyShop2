@@ -9,20 +9,20 @@ import ViewSearchProductsHook from '../../CustomHook/Products/ViewSearchProducts
 
 const ShopProductsPage = () => {
 
-    const [items, pagination, onPress] = ViewSearchProductsHook();
+    const [items, pagination, onPress, getProduct, results] = ViewSearchProductsHook();
 
     if(pagination) {
         var pageCount = pagination;
     }
     else {
-        pagination = 0;
+        pageCount = 0;
     }
 
     return (
         <div style={{ minHeight: '670px' }}>
             <CategoryHeader />
             <Container>
-                <SearchCountResult title={`${items.length} نتجية بحث`} />
+                <SearchCountResult getProduct={getProduct} title={`${results} نتجية بحث`} />
                 <Row className='d-flex flex-row'>
                     <Col sm="2" xs="2" md="1" className='d-flex'>
                         <SideFilter />
