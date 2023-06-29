@@ -1,5 +1,5 @@
 import { CREATE_CATEGORY, GET_ALL_CATEGORY,  GET_ERROR, GET_ONE_CATEGORY } from "../type";
-import useGetData from "../../Hooks/useGetData";
+import {useGetData} from "../../Hooks/useGetData";
 import { useInsertDataWithImg } from "../../Hooks/useInsertData";
 
 // get all category

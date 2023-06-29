@@ -1,4 +1,4 @@
-import useGetData from "../../Hooks/useGetData";
+import {useGetData} from "../../Hooks/useGetData";
 import { useInsertData } from "../../Hooks/useInsertData";
 import {  CREATE_SUB_CATEGORY, GET_ERROR, GET_SUB_CATEGORY } from "../type";
 
