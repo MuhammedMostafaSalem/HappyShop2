@@ -1,5 +1,5 @@
-import React from 'react'
-import { Navbar, Container, FormControl, Nav } from 'react-bootstrap'
+import React, {useState, useEffect} from 'react'
+import { Navbar, Container, FormControl, Nav, NavDropdown } from 'react-bootstrap'
 import logo from '../../images/logo.png'
 import login from '../../images/login.png'
 import cart from '../../images/cart.png'
@@ -11,13 +11,31 @@ const NavBarLogin = () => {
     if (localStorage.getItem("searchWord") != null) {
         word = localStorage.getItem("searchWord")
     }
+    
+    const [user, setUser] = useState('');
+    useEffect(() => {
+        if (localStorage.getItem("user") != null) {
+            setUser(JSON.parse(localStorage.getItem("user")))
+        }
+        // if(res) {
+        //     setUser(JSON.parse(localStorage.getItem("user")))
+        // }
+        // dispatch(getLoggedUser())
+    },[])
+
+    // const res = useSelector(state => state.AuthReducer.currentUser)
+
+    const logOut = () => {
+        localStorage.removeItem('user')
+        setUser('')
+    }
 
     return (
         <Navbar className="sticky-top" bg="dark" variant="dark" expand="sm">
             <Container>
                 <Navbar.Brand>
                     <a href='/'>
-                        <img src={logo} className='logo' />
+                        <img src={logo} alt='' className='logo' />
                     </a>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,11 +49,29 @@ const NavBarLogin = () => {
                         aria-label="Search"
                     />
                     <Nav className="me-auto">
-                        <Nav.Link href='/login'
+                        {
+                            user != '' ?
+                                <NavDropdown
+                                id="basic-nav-dropdown"
+                                title={user.name}
+                                menuVariant="dark"
+                                className="mt-3"
+                                >
+                                    {
+                                        user.role === "admin" ?
+                                            <NavDropdown.Item href="/admin/allproducts">لوحة التحكم</NavDropdown.Item>
+                                        : <NavDropdown.Item href="/user/profile">الصفحة الرئيسية</NavDropdown.Item>
+                                    }
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item onClick={logOut} href="/">تسجيل خروج</NavDropdown.Item>
+                                </NavDropdown>
+                            : <Nav.Link href='/login'
                             className="nav-text d-flex mt-3 justify-content-center">
-                            <img src={login} className="login-img" alt="sfvs" />
-                            <p style={{ color: "white" }}>دخول</p>
-                        </Nav.Link>
+                                <img src={login} className="login-img" alt="sfvs" />
+                                <p style={{ color: "white" }}>دخول</p>
+                            </Nav.Link>
+                        }
+
                         <Nav.Link href='/cart'
                             className="nav-text d-flex mt-3 justify-content-center"
                             style={{ color: "white" }}>
