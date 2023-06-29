@@ -673,3 +673,15 @@ body {
 .lmMaya .eJEChV div {
   width: 59px;
 }
+
+/* style dropdown navbar */
+.dropdown-toggle{
+  font-size: 15px;
+}
+.dropdown-toggle,
+.dropdown-item {
+  color: #fff !important;
+}
+.dropdown-item {
+  text-align: center !important;
+}
