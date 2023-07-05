@@ -24,6 +24,7 @@ import UserAddAddressPage from './Page/User/UserAddAddressPage';
 import UserEditAddressPage from './Page/User/UserEditAddressPage';
 import UserProfilePage from "./Page/User/UserProfilePage";
 import AdminEditProductPage from "./Page/Admin/AdminEditProductPage";
+import ForgetPasswordPage from "./Page/Auth/ForgetPasswordPage";
 function App() {
   return (
     <div className="font" >
@@ -33,6 +34,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forget-password" element={<ForgetPasswordPage />} />
           <Route path="/allcategory" element={<AllCategoryPage />} />
           <Route path="/allbrand" element={<AllBrandPage />} />
           <Route path="/products" element={<ShopProductsPage />} />
