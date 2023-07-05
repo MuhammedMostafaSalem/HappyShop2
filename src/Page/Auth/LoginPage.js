@@ -26,11 +26,18 @@ const LoginPage = () => {
                             className="user-input text-center mx-auto"
                         />
                         <button className="btn-login mx-auto mt-4" onClick={onSubmit}>تسجيل الدخول</button>
-                        <label className="mx-auto my-4">
+                        <label className="mx-auto mt-4">
                             ليس لديك حساب ؟{" "}
                             <Link to="/register" style={{textDecoration:'none'}}>
                                 <span style={{ cursor: "pointer" }} className="text-danger">
                                     اضغط هنا
+                                </span>
+                            </Link>
+                        </label>
+                        <label className="mx-auto mt-3">
+                            <Link to="/forget-password" style={{textDecoration:'none'}}>
+                                <span style={{ cursor: "pointer" }} className="text-danger">
+                                    نسيت كلمة السر ؟
                                 </span>
                             </Link>
                         </label>
