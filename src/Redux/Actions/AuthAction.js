@@ -1,6 +1,6 @@
 import { useGetDataToken } from "../../Hooks/useGetData";
 import { useInsertData } from "../../Hooks/useInsertData";
-import { CREATE_NEW_USER, GET_CURERNT_USER, LOGIN_USER } from "../type";
+import { CREATE_NEW_USER, FORGET_PASSWORD, GET_CURERNT_USER, LOGIN_USER } from "../type";
 
 // create new user
 export const createNewUser = (data) => async (dispatch) => {
@@ -51,6 +51,24 @@ export const getLoggedUser = () => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: GET_CURERNT_USER,
+            payload: e.response,
+        })
+    }
+}
+
+//forget password
+export const forgetPassword = (data) => async (dispatch) => {
+    try {
+        const response = await useInsertData(`/api/v1/auth/forgotPasswords`, data);
+        dispatch({
+            type: FORGET_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: FORGET_PASSWORD,
             payload: e.response,
         })
     }
