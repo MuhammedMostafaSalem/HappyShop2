@@ -1,6 +1,7 @@
+import { useEditData } from "../../Hooks/useEditData";
 import { useGetDataToken } from "../../Hooks/useGetData";
 import { useInsertData } from "../../Hooks/useInsertData";
-import { CREATE_NEW_USER, FORGET_PASSWORD, GET_CURERNT_USER, LOGIN_USER, VERIFY_PASSWORD } from "../type";
+import { CREATE_NEW_USER, FORGET_PASSWORD, GET_CURERNT_USER, LOGIN_USER, RESET_PASSWORD, VERIFY_PASSWORD } from "../type";
 
 // create new user
 export const createNewUser = (data) => async (dispatch) => {
@@ -87,6 +88,24 @@ export const verifyPassword = (data) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: VERIFY_PASSWORD,
+            payload: e.response,
+        })
+    }
+}
+
+//reset password
+export const resetPassword = (data) => async (dispatch) => {
+    try {
+        const response = await useEditData(`/api/v1/auth/resetPassword`, data);
+        dispatch({
+            type: RESET_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: RESET_PASSWORD,
             payload: e.response,
         })
     }
