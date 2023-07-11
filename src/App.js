@@ -26,6 +26,7 @@ import UserProfilePage from "./Page/User/UserProfilePage";
 import AdminEditProductPage from "./Page/Admin/AdminEditProductPage";
 import ForgetPasswordPage from "./Page/Auth/ForgetPasswordPage";
 import VerifyPasswordPage from "./Page/Auth/VerifyPasswordPage";
+import ResetPasswordPage from "./Page/Auth/ResetPasswordPage";
 function App() {
   return (
     <div className="font" >
@@ -37,6 +38,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forget-password" element={<ForgetPasswordPage />} />
           <Route path="/verify-code" element={<VerifyPasswordPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/allcategory" element={<AllCategoryPage />} />
           <Route path="/allbrand" element={<AllBrandPage />} />
           <Route path="/products" element={<ShopProductsPage />} />
