@@ -24,6 +24,7 @@ const ForgetPasswordHook = () => {
     
     const onSubmit = async () => {
         validationValues()
+        localStorage.setItem('user-email', email)
         setIsPress(true)
         setLoading(true)
         await dispatch(forgetPassword({
