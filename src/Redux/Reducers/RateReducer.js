@@ -1,7 +1,8 @@
-import { CREATE_RATE } from "../type";
+import { ALL_RATE_PRODUCT, CREATE_RATE } from "../type";
 
 const initail = {
     createRate: [],
+    allRateProduct: [],
     loading: true,
 }
 
@@ -11,6 +12,12 @@ const RateReducer=(state = initail, action)=> {
             return {
                 ...state,
                 createRate: action.payload,
+                loading: false,
+            }
+        case ALL_RATE_PRODUCT : 
+            return {
+                ...state,
+                allRateProduct: action.payload,
                 loading: false,
             }
         default: 
