@@ -16,13 +16,17 @@ const ProductDetalisPage = () => {
     if(prodLike) {
         var items = prodLike.slice(0, 4)
     }
+    if(item) {
+        var rateAvg = item.ratingsAverage;
+        var rateQty = item.ratingsQuantity;
+    }
 
     return (
         <div style={{ minHeight: '670px' }}>
             <CategoryHeader />
             <Container>
                 <ProductDetalis />
-                <RateContainer />
+                <RateContainer rateAvg={rateAvg} rateQty={rateQty} />
                 <CardProductsContainer products={items} title="منتجات قد تعجبك" />
             </Container>
         </div>
