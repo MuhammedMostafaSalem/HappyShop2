@@ -4,7 +4,11 @@ import rate from '../../images/rate.png'
 import Pagination from '../Uitily/Pagination';
 import RateItem from './RateItem';
 import RatePost from './RatePost';
+import { useParams } from 'react-router-dom';
+import ViewAllRateHook from '../../CustomHook/rate/ViewAllRateHook';
 const RateContainer = ({rateAvg, rateQty}) => {
+    const {id} = useParams();
+    const [allRate, getPage, pageCount] = ViewAllRateHook(id);
     return (
         <Container className='rate-container'>
             <Row>
@@ -16,12 +20,21 @@ const RateContainer = ({rateAvg, rateQty}) => {
                 </Col>
             </Row>
             <RatePost />
-            <RateItem />
-            <RateItem />
-            <RateItem />
-            <RateItem />
+            {
+                allRate.data ?
+                    allRate.data.map((review, index)=> {
+                        return (
+                            <RateItem key={index} review={review} />
+                        )
+                    })
+                : <h6>لا يوجد تقيمات الان</h6>
+            }
 
-            <Pagination />
+            {
+                pageCount > 1 ?
+                    <Pagination pageCount={pageCount} onPress={getPage}/>
+                : null
+            }
         </Container>
     )
 }
