@@ -1,7 +1,8 @@
 import useDeleteData from "../../Hooks/useDeleteData"
+import { useEditData } from "../../Hooks/useEditData"
 import { useGetDataToken } from "../../Hooks/useGetData"
 import { useInsertData } from "../../Hooks/useInsertData"
-import { ALL_RATE_PRODUCT, CREATE_RATE, DELETE_RATE } from "../type"
+import { ALL_RATE_PRODUCT, CREATE_RATE, DELETE_RATE, EDIT_RATE } from "../type"
 
 //create rate
 export const createRate = (prodID, body) => async (dispatch) => {
@@ -49,6 +50,22 @@ export const deleteRate = (id) => async (dispatch) => {
     }catch(err) {
         dispatch({
             type: DELETE_RATE,
+            payload: err.response,
+        })
+    }
+}
+
+export const editRate = (id, body) => async (dispatch) => {
+    try {
+        const response = await useEditData(`/api/v1/reviews/${id}`, body)
+
+        dispatch({
+            type: EDIT_RATE,
+            payload: response,
+        })
+    }catch(err) {
+        dispatch({
+            type: EDIT_RATE,
             payload: err.response,
         })
     }
