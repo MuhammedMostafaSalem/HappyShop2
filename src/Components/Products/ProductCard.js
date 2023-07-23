@@ -21,21 +21,23 @@ const ProductCard = ({item}) => {
                 <Link to={`/products/${item._id}`} style={{ textDecoration: 'none' }}>
                     <Card.Img style={{ height: "228px", width: "100%" }} src={item.imageCover} />
                 </Link>
-                <div className="d-flex justify-content-end mx-2">
-                    <img
-                        src={favoff}
-                        alt=""
-                        className="text-center"
-                        style={{
-                            height: "24px",
-                            width: "26px",
-                        }}
-                    />
-                </div>
+                
                 <Card.Body>
-                    <Card.Title>
+                    <Card.Title style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div className="card-title">
                             {item.title}
+                        </div>
+
+                        <div >
+                            <img
+                                src={favoff}
+                                alt=""
+                                className="text-center"
+                                style={{
+                                    height: "24px",
+                                    width: "26px",
+                                }}
+                            />
                         </div>
                     </Card.Title>
                     <Card.Text>
