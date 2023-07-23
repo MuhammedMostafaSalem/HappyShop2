@@ -1,6 +1,7 @@
+import useDeleteData from "../../Hooks/useDeleteData"
 import { useGetDataToken } from "../../Hooks/useGetData"
 import { useInsertData } from "../../Hooks/useInsertData"
-import { ALL_RATE_PRODUCT, CREATE_RATE } from "../type"
+import { ALL_RATE_PRODUCT, CREATE_RATE, DELETE_RATE } from "../type"
 
 //create rate
 export const createRate = (prodID, body) => async (dispatch) => {
@@ -31,6 +32,23 @@ export const getAllRate = (prodID, page, limit) => async (dispatch) => {
     }catch(err) {
         dispatch({
             type: ALL_RATE_PRODUCT,
+            payload: err.response,
+        })
+    }
+}
+
+// get all review to one product 
+export const deleteRate = (id) => async (dispatch) => {
+    try {
+        const response = await useDeleteData(`/api/v1/reviews/${id}`)
+
+        dispatch({
+            type: DELETE_RATE,
+            payload: response,
+        })
+    }catch(err) {
+        dispatch({
+            type: DELETE_RATE,
             payload: err.response,
         })
     }
