@@ -35,6 +35,14 @@ const DeleteRateHook = (review) => {
     useEffect(() => {
         if(loading === false) {
             console.log(res)
+            if (res === "") {
+                toast.success("تم حذف التقييم بنجاح")
+                setTimeout(() => {
+                    window.location.reload(false)
+                }, 1000);
+            }
+            else
+                toast.error("هناك مشكله فى عملية المسح")
         }
     }, [loading])
 
