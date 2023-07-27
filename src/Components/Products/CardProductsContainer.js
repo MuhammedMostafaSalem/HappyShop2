@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container,Row } from 'react-bootstrap'
 import SubTiltle from '../Uitily/SubTiltle'
 import ProductCard from './ProductCard'
+import CardContainerHook from '../../CustomHook/Fav Products/CardContainerHook'
 
 const CardProductsContainer = ({title, btntitle, pathText, products}) => {
+    const [favProd] = CardContainerHook();
+    
     return (
         <Container>
             {
@@ -16,7 +19,7 @@ const CardProductsContainer = ({title, btntitle, pathText, products}) => {
                 products ?
                     products.map((item, index) => {
                         return (
-                            <ProductCard key={index} item={item} />
+                            <ProductCard key={index} item={item} favProd={favProd} />
                         )
                     })
                 :null
