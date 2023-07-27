@@ -1,10 +1,12 @@
 import React from 'react'
 import { Card, Col } from 'react-bootstrap'
-import prod1 from "../../images/prod1.png";
-import favoff from "../../images/fav-off.png";
 import rate from "../../images/rate.png";
 import { Link } from 'react-router-dom';
-const ProductCard = ({item}) => {
+import ProductCardHook from '../../CustomHook/Fav Products/ProductCardHook';
+
+const ProductCard = ({item, favProd}) => {
+    const [handleFav, favImg, addToWishListData, removeToWishListData]= ProductCardHook(item, favProd)
+    
     return (
         <Col xs="6" sm="6" md="4" lg="3" className="d-flex">
 
@@ -30,12 +32,14 @@ const ProductCard = ({item}) => {
 
                         <div >
                             <img
-                                src={favoff}
+                                onClick={handleFav}
+                                src={favImg}
                                 alt=""
                                 className="text-center"
                                 style={{
                                     height: "24px",
                                     width: "26px",
+                                    cursor: 'pointer'
                                 }}
                             />
                         </div>
