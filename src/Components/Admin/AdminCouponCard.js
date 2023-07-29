@@ -3,6 +3,7 @@ import { Button, Col, Modal, Row } from 'react-bootstrap'
 import deleteIcon from '../../images/delete.png'
 import editIcon from '../../images/edit.png'
 import DeleteCouponHook from '../../CustomHook/Coupon/DeleteCouponHook'
+import { Link } from 'react-router-dom';
 
 const AdminCouponCard = ({item}) => {
     const [showDelete, handleCloseDelete, handleShowDelete, handleDelete] = DeleteCouponHook(item);
@@ -46,7 +47,9 @@ const AdminCouponCard = ({item}) => {
                                 height="17px"
                                 width="15px"
                             />
-                            <p className="item-delete-edit"> تعديل</p>
+                            <Link to={`/admin/editcoupon/${item._id}`} style={{textDecoration: "none"}}>
+                                <p className="item-delete-edit"> تعديل</p>
+                            </Link>
                         </div>
                         <div className="d-flex">
                             <img
