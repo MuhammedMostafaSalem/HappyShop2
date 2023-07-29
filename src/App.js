@@ -29,6 +29,7 @@ import VerifyPasswordPage from "./Page/Auth/VerifyPasswordPage";
 import ResetPasswordPage from "./Page/Auth/ResetPasswordPage";
 import AdminAddCouponPage from "./Page/Admin/AdminAddCouponPage";
 import AdminAllCouponsPage from "./Page/Admin/AdminAllCouponsPage";
+import AdminEditCouponPage from "./Page/Admin/AdminEditCouponPage";
 function App() {
   return (
     <div className="font" >
@@ -57,6 +58,7 @@ function App() {
           <Route path="/admin/edit-product/:id" element={<AdminEditProductPage />} />  
           <Route path="/admin/addcoupon" element={<AdminAddCouponPage />} />  
           <Route path="/admin/allcoupons" element={<AdminAllCouponsPage />} />  
+          <Route path="/admin/editcoupon/:id" element={<AdminEditCouponPage />} />  
           <Route path="/user/allorders" element={<UserAllOrdersPage />} />
           <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />} />
           <Route path="/user/addresses" element={<UserAllAddresPage />} />
