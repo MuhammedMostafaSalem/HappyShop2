@@ -1,7 +1,8 @@
 import useDeleteData from "../../Hooks/useDeleteData";
 import { useGetDataToken } from "../../Hooks/useGetData";
 import { useInsertData } from "../../Hooks/useInsertData";
-import { ADD_COUPON, DELETE_COUPON, GET_ALL_COUPON } from "../type";
+import { useEditData } from "../../Hooks/useEditData";
+import { ADD_COUPON, DELETE_COUPON, EDIT_COUPON, GET_ALL_COUPON, GET_ONE_COUPON } from "../type";
 
 // create coupon
 export const createCoupon = (body) => async (dispatch) => {
@@ -49,6 +50,40 @@ export const deleteCoupon = (id) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: DELETE_COUPON,
+            payload: e.response,
+        })
+    }
+}
+
+// get one coupon
+export const getOneCoupon = (id) => async (dispatch) => {
+    try {
+        const response = await useGetDataToken(`/api/v1/coupons/${id}`);
+        dispatch({
+            type: GET_ONE_COUPON,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ONE_COUPON,
+            payload: e.response,
+        })
+    }
+}
+
+// edit coupon
+export const editCoupon = (id, body) => async (dispatch) => {
+    try {
+        const response = await useEditData(`/api/v1/coupons/${id}`, body);
+        dispatch({
+            type: EDIT_COUPON,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: EDIT_COUPON,
             payload: e.response,
         })
     }
