@@ -1,8 +1,8 @@
-import { ADD_COUPON, GET_ALL_COUPON } from "../type";
+import { ADD_COUPON, DELETE_COUPON, GET_ALL_COUPON } from "../type";
 
 const initail = {
     addCoupon: [],
-    allCoupons: [],
+    deleteCoupons: [],
 }
 
 const CouponReducer = (state=initail, action) => {
@@ -16,6 +16,11 @@ const CouponReducer = (state=initail, action) => {
             return {
                 ...state,
                 allCoupons: action.payload,
+            }
+        case DELETE_COUPON: 
+            return {
+                ...state,
+                deleteCoupons: action.payload,
             }
         default: 
             return state;
