@@ -5,14 +5,14 @@ import { createCoupon } from "../../Redux/Actions/CouponAction";
 
 const AddCouponHook = () => {
     const dispatch = useDispatch()
-    const [couponName, setCouponNameName] = useState('')
+    const [couponName, setCouponName] = useState('')
     const [couponDate, setCouponDate] = useState('')
     const [couponValue, setCouponValue] = useState('')
     const [loading, setLoading] = useState(true)
 
     const onChangCouponName = (e) => {
         e.persist();
-        setCouponNameName(e.target.value)
+        setCouponName(e.target.value)
     }
     
     const onChangCouponDate = (e) => {
@@ -59,7 +59,7 @@ const AddCouponHook = () => {
                 console.log(res)
                 if(res && res.status === 201) {
                     toast.success('تمت اضافة الكوبون بنجاح')
-                    setCouponNameName('')
+                    setCouponName('')
                     setCouponDate('')
                     setCouponValue('')
                 }
