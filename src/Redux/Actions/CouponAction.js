@@ -1,6 +1,7 @@
+import useDeleteData from "../../Hooks/useDeleteData";
 import { useGetDataToken } from "../../Hooks/useGetData";
 import { useInsertData } from "../../Hooks/useInsertData";
-import { ADD_COUPON, GET_ALL_COUPON } from "../type";
+import { ADD_COUPON, DELETE_COUPON, GET_ALL_COUPON } from "../type";
 
 // create coupon
 export const createCoupon = (body) => async (dispatch) => {
@@ -31,6 +32,23 @@ export const getAllCoupon = () => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: GET_ALL_COUPON,
+            payload: e.response,
+        })
+    }
+}
+
+// delet coupon
+export const deleteCoupon = (id) => async (dispatch) => {
+    try {
+        const response = await useDeleteData(`/api/v1/coupons/${id}`);
+        dispatch({
+            type: DELETE_COUPON,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: DELETE_COUPON,
             payload: e.response,
         })
     }
