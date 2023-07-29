@@ -1,9 +1,12 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Button, Col, Modal, Row } from 'react-bootstrap'
 import deleteIcon from '../../images/delete.png'
 import editIcon from '../../images/edit.png'
+import DeleteCouponHook from '../../CustomHook/Coupon/DeleteCouponHook'
 
 const AdminCouponCard = ({item}) => {
+    const [showDelete, handleCloseDelete, handleShowDelete, handleDelete] = DeleteCouponHook(item);
+
     // To change the date format
     const dateString = item.expire;
 
@@ -15,6 +18,20 @@ const AdminCouponCard = ({item}) => {
 
     return (
         <div className="user-address-card my-3 px-2">
+            <Modal show={showDelete} onHide={handleCloseDelete}>
+                <Modal.Header>
+                    <Modal.Title>تأكيد الازالة</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>هل انت متأكد من عملية الازالة ؟</Modal.Body>
+                <Modal.Footer style={{borderTop: "none"}}>
+                    <Button variant="danger" onClick={handleCloseDelete}>
+                        اغلاق
+                    </Button>
+                    <Button variant="secondary" onClick={handleDelete}>
+                        ازالة
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Row className="d-flex justify-content-between  ">
                 <Col xs="6">
                     <div className="p-2">اسم الكوبون: {item.name}</div>
@@ -31,7 +48,7 @@ const AdminCouponCard = ({item}) => {
                             />
                             <p className="item-delete-edit"> تعديل</p>
                         </div>
-                        <div className="d-flex ">
+                        <div className="d-flex">
                             <img
                                 alt=""
                                 className="ms-1 mt-2"
@@ -39,7 +56,7 @@ const AdminCouponCard = ({item}) => {
                                 height="17px"
                                 width="15px"
                             />
-                            <p className="item-delete-edit"> ازاله</p>
+                            <p className="item-delete-edit" onClick={handleShowDelete}> ازاله</p>
                         </div>
                     </div>
                 </Col>
