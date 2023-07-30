@@ -3,7 +3,10 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Pagination from '../../Components/Uitily/Pagination'
 import UserAllAddress from '../../Components/User/UserAllAddress'
 import UserSideBar from '../../Components/User/UserSideBar'
+import ViewAllAddressesHook from '../../CustomHook/User/ViewAllAddressesHook'
 const UserAllAddresPage = () => {
+    const [allAddresses] = ViewAllAddressesHook()
+    
     return (
         <Container >
             <Row className='py-3'>
@@ -12,7 +15,7 @@ const UserAllAddresPage = () => {
                 </Col>
 
                 <Col sm="9" xs="10" md="10">
-                  <UserAllAddress />
+                    <UserAllAddress allAddresses={allAddresses}/>
                 </Col>
             </Row>
         </Container>
