@@ -3,13 +3,19 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import UserAddressCard from './UserAddressCard'
 
-const UserAllAddress = () => {
+const UserAllAddress = ({allAddresses}) => {
     return (
         <div>
             <div className="admin-content-text pb-4">دفتر العنوانين</div>
-            <UserAddressCard />
-            <UserAddressCard />
-            <UserAddressCard />
+            {
+                allAddresses ?
+                    allAddresses.map((item, index) => {
+                        return (
+                            <UserAddressCard key={index} item={item} />
+                        )
+                    })
+                : <h4>لا يوجد عناوين الان</h4>
+            }
 
             <Row className="justify-content-center">
                 <Col sm="5" className="d-flex justify-content-center">
