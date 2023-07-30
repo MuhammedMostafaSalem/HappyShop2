@@ -1,7 +1,8 @@
 import React from 'react'
 import { Row, Col, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import deleteicon from '../../images/delete.png'
+import deleteIcon from '../../images/delete.png'
+import editIcon from '../../images/edit.png'
 import DeleteAddressHook from '../../CustomHook/User/DeleteAddressHook';
 
 const UserAddressCard = ({item}) => {
@@ -28,16 +29,16 @@ const UserAddressCard = ({item}) => {
                     <div className="p-2">{item.alias}</div>
                 </Col>
                 <Col xs="4" className="d-flex d-flex justify-content-end">
-                    <div className="d-flex p-2">
+                    <div className="d-flex gap-3 px-2 py-1">
                         <div className="d-flex mx-2">
                             <img
                                 alt=""
                                 className="ms-1 mt-2"
-                                src={deleteicon}
+                                src={editIcon}
                                 height="17px"
                                 width="15px"
                             />
-                            <Link to="/user/edit-address" style={{ textDecoration: "none" }}>
+                            <Link to={`/user/edit-address/${item._id}`} style={{ textDecoration: "none" }}>
                                 <p className="item-delete-edit"> تعديل</p>
                             </Link>
                         </div>
@@ -45,7 +46,7 @@ const UserAddressCard = ({item}) => {
                             <img
                                 alt=""
                                 className="ms-1 mt-2"
-                                src={deleteicon}
+                                src={deleteIcon}
                                 height="17px"
                                 width="15px"
                             />
