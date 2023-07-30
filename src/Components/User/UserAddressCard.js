@@ -1,10 +1,28 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import deleteicon from '../../images/delete.png'
+import DeleteAddressHook from '../../CustomHook/User/DeleteAddressHook';
+
 const UserAddressCard = ({item}) => {
+    const [showDelete, handleCloseDelete, handleShowDelete, handleDelete] = DeleteAddressHook(item)
+
     return (
         <div className="user-address-card my-3 px-2">
+            <Modal show={showDelete} onHide={handleCloseDelete}>
+                <Modal.Header>
+                    <Modal.Title>تأكيد الازالة</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>هل انت متأكد من عملية الازالة ؟</Modal.Body>
+                <Modal.Footer style={{borderTop: "none"}}>
+                    <Button variant="danger" onClick={handleCloseDelete}>
+                        اغلاق
+                    </Button>
+                    <Button variant="secondary" onClick={handleDelete}>
+                        ازالة
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Row className="d-flex justify-content-between">
                 <Col xs="1">
                     <div className="p-2">{item.alias}</div>
@@ -31,7 +49,7 @@ const UserAddressCard = ({item}) => {
                                 height="17px"
                                 width="15px"
                             />
-                            <p className="item-delete-edit"> ازاله</p>
+                            <p onClick={handleShowDelete} className="item-delete-edit"> ازاله</p>
                         </div>
                     </div>
                 </Col>
