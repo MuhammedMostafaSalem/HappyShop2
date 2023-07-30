@@ -8,6 +8,7 @@ import RateReducer from "./RateReducer";
 import WishListReducer from "./WishListReducer";
 import CouponReducer from "./CouponReducer";
 import UserAddressReducer from "./UserAddressReducer";
+import ProfileReducer from "./ProfileReducer";
 
 export default combineReducers({
     AllCategory: CategoryReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
     WishListReducer: WishListReducer,
     CouponReducer: CouponReducer,
     UserAddressReducer: UserAddressReducer,
+    ProfileReducer: ProfileReducer,
 })
