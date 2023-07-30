@@ -63,7 +63,7 @@ function App() {
           <Route path="/user/favoriteproducts" element={<UserFavoriteProductsPage />} />
           <Route path="/user/addresses" element={<UserAllAddresPage />} />
           <Route path="/user/add-address" element={<UserAddAddressPage />} />
-          <Route path="/user/edit-address" element={<UserEditAddressPage />} />  
+          <Route path="/user/edit-address/:id" element={<UserEditAddressPage />} />  
           <Route path="/user/profile" element={<UserProfilePage />} />  
         </Routes>
       </BrowserRouter>
