@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import Pagination from '../../Components/Uitily/Pagination'
 import UserAllAddress from '../../Components/User/UserAllAddress'
 import UserSideBar from '../../Components/User/UserSideBar'
 import ViewAllAddressesHook from '../../CustomHook/User/ViewAllAddressesHook'
+
 const UserAllAddresPage = () => {
     const [allAddresses] = ViewAllAddressesHook()
     
