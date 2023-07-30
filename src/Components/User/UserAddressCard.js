@@ -2,12 +2,12 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import deleteicon from '../../images/delete.png'
-const UserAddressCard = () => {
+const UserAddressCard = ({item}) => {
     return (
         <div className="user-address-card my-3 px-2">
-            <Row className="d-flex justify-content-between  ">
+            <Row className="d-flex justify-content-between">
                 <Col xs="1">
-                    <div className="p-2">المنزل</div>
+                    <div className="p-2">{item.alias}</div>
                 </Col>
                 <Col xs="4" className="d-flex d-flex justify-content-end">
                     <div className="d-flex p-2">
@@ -45,12 +45,35 @@ const UserAddressCard = () => {
                             fontFamily: "Almarai",
                             fontSize: "14px",
                         }}>
-                        القاهرة مدينه نصر شارع التسعين عماره ١٤
+                        {item.details}
                     </div>
                 </Col>
             </Row>
 
             <Row className="mt-3">
+                <Col xs="12" className="d-flex">
+                    <div
+                        style={{
+                            color: "#555550",
+                            fontFamily: "Almarai",
+                            fontSize: "16px",
+                        }}>
+                        اسم المدينة:
+                    </div>
+
+                    <div
+                        style={{
+                            color: "#979797",
+                            fontFamily: "Almarai",
+                            fontSize: "16px",
+                        }}
+                        className="mx-2">
+                        {item.city}
+                    </div>
+                </Col>
+            </Row>
+
+            <Row className="mt-3 pb-2">
                 <Col xs="12" className="d-flex">
                     <div
                         style={{
@@ -68,7 +91,7 @@ const UserAddressCard = () => {
                             fontSize: "16px",
                         }}
                         className="mx-2">
-                        0021313432423
+                        {item.phone}
                     </div>
                 </Col>
             </Row>
