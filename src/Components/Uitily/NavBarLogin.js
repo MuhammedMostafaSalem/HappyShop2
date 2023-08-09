@@ -4,8 +4,10 @@ import logo from '../../images/logo.png'
 import login from '../../images/login.png'
 import cart from '../../images/cart.png'
 import NavbarSearchHook from '../../CustomHook/Search/NavbarSearchHook'
+import AllUserCartHook from '../../CustomHook/Cart/AllUserCartHook'
 const NavBarLogin = () => {
     const [onChangeSearch, searchWord] = NavbarSearchHook();
+    const [itemsNums] = AllUserCartHook()
 
     let word = "";
     if (localStorage.getItem("searchWord") != null) {
@@ -51,7 +53,7 @@ const NavBarLogin = () => {
                     />
                     <Nav className="me-auto">
                         {
-                            user != '' ?
+                            user !== '' ?
                                 <NavDropdown
                                 id="basic-nav-dropdown"
                                 title={user.name}
@@ -74,10 +76,14 @@ const NavBarLogin = () => {
                         }
 
                         <Nav.Link href='/cart'
-                            className="nav-text d-flex mt-3 justify-content-center"
+                            className="nav-text d-flex mt-3 justify-content-center position-relative"
                             style={{ color: "white" }}>
                             <img src={cart} className="login-img" alt="sfvs" />
-                            <p style={{ color: "white" }}>العربه</p>
+                            <p style={{ color: "white" }}>العربة</p>
+
+                            <span className="position-absolute top-10 start-0 translate-middle badge rounded-pill bg-danger">
+                                {itemsNums || null}
+                            </span>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
