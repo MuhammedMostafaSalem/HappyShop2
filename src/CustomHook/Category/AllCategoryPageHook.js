@@ -8,7 +8,10 @@ const AllCategoryPageHook = () => {
 
     // when first load
     useEffect(() => {
-        dispatch(getAllCategory(5));
+        const get = async() => {
+            await dispatch(getAllCategory(5));
+        }
+        get();
     }, [dispatch])
 
     // to get state from redux
@@ -17,9 +20,11 @@ const AllCategoryPageHook = () => {
     
     // to get page count
     let pageCount = 0 ;
-    if(categoryData.paginationResult) {
-        pageCount = categoryData.paginationResult.numberOfPages
-    }
+    try {
+        if(categoryData.paginationResult) {
+            pageCount = categoryData.paginationResult.numberOfPages
+        }
+    } catch (e) {}
 
     // when press Pagination
     const getPage=(page)=> {
