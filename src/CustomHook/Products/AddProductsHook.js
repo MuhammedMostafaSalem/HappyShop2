@@ -149,6 +149,7 @@ const AddProductsHook = () => {
         formData.append("description", prodDescription);
         formData.append("quantity", qty);
         formData.append("price", priceBefore);
+        formData.append("priceAfterDiscount", priceAftr);
         formData.append("imageCover", imgCover);
         formData.append("category", CatID);
         formData.append("brand", BrandID);
