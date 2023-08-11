@@ -15,7 +15,7 @@ const CategoryContainer = ({categoryData, loading}) => {
                 categoryData ? 
                     categoryData.map((item, index) => {
                         return (
-                            <CategoryCard title={item.name} img={item.image} background={colors[Math.floor(Math.random() * 5 ) + 1]} key={index} />
+                            <CategoryCard title={item.name} img={item.image} background={colors[Math.floor(Math.random() * 5 ) + 1]} key={index} id={item._id} />
                         )
                     })
                 : <h3>لا يوجد تصنيفات</h3>
