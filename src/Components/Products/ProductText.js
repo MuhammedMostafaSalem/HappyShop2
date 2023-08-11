@@ -50,6 +50,12 @@ const ProductText = () => {
           }
         </Col>
       </Row>
+      <Row>
+      <Col md="8" className="mt-4">
+        <div className="cat-text d-inline">الكمية المتاحة :</div>
+        <div className="barnd-text d-inline mx-1">{item.quantity}</div>
+      </Col>
+    </Row>
 
       <Row className="mt-4">
         <div className="cat-text">المواصفات :</div>
@@ -61,7 +67,13 @@ const ProductText = () => {
       </Row>
       <Row className="mt-4">
         <Col md="12">
-          <div className="product-price d-inline px-3 py-3 border">{item.price} جنية</div>
+          {
+            item.priceAfterDiscount >= 1 ?
+              <div className="product-price d-inline px-3 py-3 border">
+              <span style={{textDecoration: "line-through", fontSize: '15px'}}>{item.price}</span> {item.priceAfterDiscount} جنية
+              </div>
+            : item.price
+          }
           <div onClick={addToCartHandel} className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
         </Col>
       </Row>
