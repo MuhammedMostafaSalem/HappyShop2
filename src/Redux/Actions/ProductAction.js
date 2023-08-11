@@ -2,7 +2,7 @@ import useDeleteData from "../../Hooks/useDeleteData";
 import { useEditDataWithImg } from "../../Hooks/useEditData";
 import {useGetData} from "../../Hooks/useGetData";
 import { useInsertDataWithImg } from "../../Hooks/useInsertData";
-import { CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
+import { CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ALL_PRODUCTS_CATEGORY, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
 
 //create products with pagination
 export const createProduct = (formData) => async (dispatch) => {
@@ -141,6 +141,23 @@ export const editProducts = (id, data) => async (dispatch) => {
         dispatch({
             type: GET_ERROR,
             payload: "Error " + err,
+        })
+    }
+}
+
+//get all products by category id
+export const getProductsByCategoryId = (page, limit, catId) => async (dispatch) => {
+    try {
+        const res = await useGetData(`/api/v1/products?limit=${limit}&page=${page}&category=${catId}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS_CATEGORY,
+            payload: res,
+            loading: true,
+        })
+    }catch(err) {
+        dispatch({
+            type: GET_ALL_PRODUCTS_CATEGORY,
+            payload: err.res,
         })
     }
 }
