@@ -2,7 +2,7 @@ import useDeleteData from "../../Hooks/useDeleteData";
 import { useEditDataWithImg } from "../../Hooks/useEditData";
 import {useGetData} from "../../Hooks/useGetData";
 import { useInsertDataWithImg } from "../../Hooks/useInsertData";
-import { CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ALL_PRODUCTS_CATEGORY, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
+import { CREATE_PRODUCT, DELETE_PRODUCTS, EDIT_PRODUCTS, GET_ALL_PRODUCT, GET_ALL_PRODUCTS_BRAND, GET_ALL_PRODUCTS_CATEGORY, GET_ERROR, GET_PRODUCT_DETAILS, GET_PRODUCT_LIKE } from "../type";
 
 //create products with pagination
 export const createProduct = (formData) => async (dispatch) => {
@@ -157,6 +157,23 @@ export const getProductsByCategoryId = (page, limit, catId) => async (dispatch) 
     }catch(err) {
         dispatch({
             type: GET_ALL_PRODUCTS_CATEGORY,
+            payload: err.res,
+        })
+    }
+}
+
+//get all products by brand id
+export const getProductsByBrandId = (page, limit, brandId) => async (dispatch) => {
+    try {
+        const res = await useGetData(`/api/v1/products?limit=${limit}&page=${page}&brand=${brandId}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS_BRAND,
+            payload: res,
+            loading: true,
+        })
+    }catch(err) {
+        dispatch({
+            type: GET_ALL_PRODUCTS_BRAND,
             payload: err.res,
         })
     }
