@@ -20,7 +20,7 @@ const BrandFeatured = ({ title, btntitle }) => {
                         items ?
                             items.map((item, index) => {
                                 return (
-                                    <BrandCard img={item.image} key={index} />
+                                    <BrandCard img={item.image} key={index} id={item._id} />
                                 )
                             })
                         : <h3>لا يوجد ماركات</h3>
