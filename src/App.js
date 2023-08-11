@@ -32,6 +32,7 @@ import AdminAllCouponsPage from "./Page/Admin/AdminAllCouponsPage";
 import AdminEditCouponPage from "./Page/Admin/AdminEditCouponPage";
 import ProtectedRoutesHook from "./Routes/ProtectedRoutesHook";
 import ProtectedRoutes from "./Routes/ProtectedRoutes";
+import ProductsByCategoryPage from "./Page/Products/ProductsByCategoryPage";
 
 function App() {
   const [userData, isUser, isAdmin] = ProtectedRoutesHook();
@@ -54,6 +55,7 @@ function App() {
           <Route path="/allbrand" element={<AllBrandPage />} />
           <Route path="/products" element={<ShopProductsPage />} />
           <Route path="/products/:id" element={<ProductDetalisPage />} />
+          <Route path="/products/category/:id" element={<ProductsByCategoryPage />} />
 
           <Route element={<ProtectedRoutes auth={isAdmin}/>}>
             <Route path="/admin/allproducts" element={<AdminAllProductsPage />} />
