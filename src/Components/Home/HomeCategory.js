@@ -17,7 +17,7 @@ const HomeCategory = () => {
                     items ? 
                     items.map((item, index) => {
                             return (
-                                <CategoryCard title={item.name} img={item.image} background={colors[index]} key={index} />
+                                <CategoryCard title={item.name} img={item.image} background={colors[index]} key={index} id={item._id} />
                             )
                         })
                     : <h3>لا يوجد تصنيفات</h3>
