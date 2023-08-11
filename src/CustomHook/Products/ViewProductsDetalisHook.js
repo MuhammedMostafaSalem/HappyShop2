@@ -20,12 +20,14 @@ const ViewProductsDetalisHook = (prodID) => {
 
     // to show product item
     let item = []
-    if(oneProduct.data) {
-        item = oneProduct.data;
-    }
-    else {
-        item = []
-    }
+    try {
+        if(oneProduct.data) {
+            item = oneProduct.data;
+        }
+        else {
+            item = []
+        }
+    } catch(e) {}
 
 
 
