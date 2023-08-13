@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-const CartCheckout = ({totalPriceCart, itemsNums, totalPriceAfterDiscount, couponNameRes, deleteAllCartHandle, couponName, onChangeCoupon, submitCouponHandel}) => {
-
+const CartCheckout = ({totalPriceCart, itemsNums, totalPriceAfterDiscount, couponNameRes, deleteAllCartHandle, couponName, onChangeCoupon, submitCouponHandel, cartItems}) => {
+    const navigate = useNavigate()
     useEffect(() => {
         if(couponNameRes) {
             onChangeCoupon(couponNameRes)
         }
     }, [couponNameRes])
+
+    const checkOutHandle = () => {
+        if(cartItems.length >= 1) {
+            navigate('/order/paymethoud')
+        } else {
+            toast.warning('من فضلك اضف منتجات للشراء')
+        }
+    }
 
     return (
         <Row className="my-1 d-flex justify-content-center cart-checkout pt-3">
@@ -29,12 +38,7 @@ const CartCheckout = ({totalPriceCart, itemsNums, totalPriceAfterDiscount, coupo
                         : `${totalPriceCart} جنية`
                     }
                 </div>
-                <Link
-                    to="/order/paymethoud"
-                    style={{ textDecoration: "none" }}
-                    className="product-cart-add d-inline">
-                    <button className="product-cart-add w-100 px-2"> اتمام الشراء</button>
-                </Link>
+                <button onClick={checkOutHandle} className="product-cart-add w-100 px-2"> اتمام الشراء</button>
             </Col>
             <Col xs="12" className='mt-4'>
                 {
