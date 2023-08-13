@@ -7,7 +7,7 @@ import DeleteCartHook from './../../CustomHook/Cart/DeleteCartHook';
 import ApplayCouponHook from './../../CustomHook/Cart/ApplayCouponHook';
 
 const CartPage = () => {
-    const [itemsNums, cartItems, totalPriceCart, totalPriceAfterDiscount, couponNameRes] = AllUserCartHook()
+    const [itemsNums, cartItems, totalPriceCart, totalPriceAfterDiscount, couponNameRes, cartID] = AllUserCartHook();
     const [deleteAllCartHandle] = DeleteCartHook();
     const [couponName, onChangeCoupon, submitCouponHandel] = ApplayCouponHook();
 
@@ -30,7 +30,7 @@ const CartPage = () => {
                 </Col>
 
                 <Col xs="6" md="3">
-                    <CartCheckout totalPriceCart={totalPriceCart} itemsNums={itemsNums} totalPriceAfterDiscount={totalPriceAfterDiscount}  couponNameRes={couponNameRes} deleteAllCartHandle={deleteAllCartHandle} couponName={couponName} onChangeCoupon={onChangeCoupon} submitCouponHandel={submitCouponHandel} />
+                    <CartCheckout cartItems={cartItems} totalPriceCart={totalPriceCart} itemsNums={itemsNums} totalPriceAfterDiscount={totalPriceAfterDiscount}  couponNameRes={couponNameRes} deleteAllCartHandle={deleteAllCartHandle} couponName={couponName} onChangeCoupon={onChangeCoupon} submitCouponHandel={submitCouponHandel} />
                 </Col>
             </Row>
         </Container>
