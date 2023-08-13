@@ -74,9 +74,9 @@ const OrderPayCashHook = () => {
             console.log(resOrserCash)
             if(resOrserCash && resOrserCash.status === 201) {
                 toast.success('تم انشاء طلبك')
-                // setTimeout(() => {
-                //     navigate('/user/allorders')
-                // }, 2000);
+                setTimeout(() => {
+                    navigate('/user/allorders')
+                }, 2000);
             } else {
                 toast.error('فشل فى اكمال الطلب من فضلك حاول مره اخرى')
             }
