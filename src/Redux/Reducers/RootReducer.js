@@ -11,6 +11,7 @@ import UserAddressReducer from "./UserAddressReducer";
 import ProfileReducer from "./ProfileReducer";
 import CartReducer from "./CartReducer";
 import CheckOutCashReducer from "./CheckOutCashReducer";
+import OrdersReducer from "./OrdersReducer";
 
 export default combineReducers({
     AllCategory: CategoryReducer,
@@ -25,4 +26,5 @@ export default combineReducers({
     ProfileReducer: ProfileReducer,
     CartReducer: CartReducer,
     CheckOutCashReducer: CheckOutCashReducer,
+    OrdersReducer: OrdersReducer,
 })
