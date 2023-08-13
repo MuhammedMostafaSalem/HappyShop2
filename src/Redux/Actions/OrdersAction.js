@@ -1,5 +1,6 @@
+import { useEditData } from "../../Hooks/useEditData";
 import { useGetDataToken } from "../../Hooks/useGetData";
-import { GET_ALL_ORDER } from "../type";
+import { GET_ALL_ORDER, GET_ONE_ORDER, UPDATE_ORDER_DELIVER, UPDATE_ORDER_PAY } from "../type";
 
 export const getAllOrders = (page, limit) => async (dispatch) => {
     try {
@@ -12,6 +13,56 @@ export const getAllOrders = (page, limit) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: GET_ALL_ORDER,
+            payload: e.response,
+        })
+    }
+}
+
+export const getOneOrder = (id) => async (dispatch) => {
+    try {
+        const response = await useGetDataToken(`/api/v1/orders/${id}`);
+        dispatch({
+            type: GET_ONE_ORDER,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ONE_ORDER,
+            payload: e.response,
+        })
+    }
+}
+
+export const changeOrderPay = (id) => async (dispatch) => {
+    try {
+        const response = await useEditData(`/api/v1/orders/${id}/pay`);
+
+        dispatch({
+            type: UPDATE_ORDER_PAY,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: UPDATE_ORDER_PAY,
+            payload: e.response,
+        })
+    }
+}
+
+export const changeOrderDeliver = (id) => async (dispatch) => {
+    try {
+        const response = await useEditData(`/api/v1/orders/${id}/deliver`);
+
+        dispatch({
+            type: UPDATE_ORDER_DELIVER,
+            payload: response,
+        })
+
+    } catch (e) {
+        dispatch({
+            type: UPDATE_ORDER_DELIVER,
             payload: e.response,
         })
     }
