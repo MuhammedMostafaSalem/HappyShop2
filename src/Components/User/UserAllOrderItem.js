@@ -9,7 +9,7 @@ const UserAllOrderItem = ({orderItem}) => {
     }
 
     return (
-        <div className="user-order mt-2">
+        <div className="user-order mt-2 p-3">
             <Row>
                 <div className="py-2 order-title">
                     طلب رقم #{orderItem.id || 0} ...تم بتاريخ {formatDate(orderItem.createdAt)}
