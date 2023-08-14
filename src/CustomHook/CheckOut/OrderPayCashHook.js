@@ -83,7 +83,7 @@ const OrderPayCashHook = () => {
         }
     }, [loadingCreateOrder])
 
-    return [addressDetalis, chooseAddressHandle, createOrderCashDandle, totalPriceCart]
+    return [addressDetalis, chooseAddressHandle, createOrderCashDandle]
 }
 
 export default OrderPayCashHook
