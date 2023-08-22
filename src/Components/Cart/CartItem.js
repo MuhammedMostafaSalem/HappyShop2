@@ -10,8 +10,8 @@ const CartItem = ({item}) => {
   const [itemCount, onChangeCount, editQuantityCartHandele] = EditQuantityCartHook(item)
   
   return (
-    <Col xs="12" className="cart-item-body my-2 d-flex px-2">
-      <img width="160px" height="197px" src={item.product.imageCover || mobile} alt="" />
+    <Col xs="12" className="cart-item-body my-2 d-flex px-2 gap-4">
+      <img width="160px" height="197px" src={`http://127.0.0.1:8000/products/${item.product.imageCover}` || mobile} alt="" />
       <div className="w-100">
         <Row className="justify-content-between">
           <Col sm="12" className=" d-flex flex-row justify-content-between">
